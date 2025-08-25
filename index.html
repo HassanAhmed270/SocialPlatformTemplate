@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fryends – Responsive Desktop + Mobile</title>
+
+  <!-- Tailwind CDN (use one; keeping this for quick run) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional: Smooth fonts + scrollbar for FEED ONLY -->
+  <style>
+    /* Only the FEED section (#postSection) gets a custom scrollbar */
+    #postSection::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #postSection::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    #postSection::-webkit-scrollbar-thumb {
+      background: #d4a017;
+      border-radius: 10px;
+    }
+
+    #postSection::-webkit-scrollbar-thumb:hover {
+      background: #bb8f13;
+    }
+
+    /* Prevent body double scroll on desktop when center feed scrolls */
+    @media (min-width: 1024px) {
+      body {
+        overflow-y: hidden;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 antialiased">
+
+  <!-- ============================= -->
+  <!-- Top-level Responsive Container -->
+  <!-- ============================= -->
+  <div class="min-h-screen w-full flex justify-center">
+
+    <!-- Max layout width to keep content centered like Twitter -->
+    <div class="w-full max-w-[1400px] flex gap-2 sm:gap-4 px-0 sm:px-2 md:px-4">
+
+      <!-- ================= Left Sidebar (Desktop/Tablet) ================= -->
+      <!-- Hidden on small; shows from md/lg upward. Sticky for desktop UX -->
+      <aside class="hidden lg:flex lg:w-[22%] xl:w-[20%] 2xl:w-[18%] py-4 pl-2 lg:pl-3 xl:pl-6
+               flex-col justify-between sticky top-0 h-screen">
+
+        <!-- Left: Logo + Nav + Post button (YOUR ICONS UNTOUCHED) -->
+        <div class="left w-full">
+          <!-- Logo -->
+          <div class="logo ml-2 md:ml-6 lg:ml-4 xl:ml-6 py-2">
+            <img src="svgs/fryends-logo.svg" alt="Fryends logo" />
+          </div>
+
+          <!-- Navigation Links (keep markup as you had; only spacing refined) -->
+          <ul class="pagelinks px-1 md:px-4 lg:px-3 xl:px-6 mt-2">
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/home.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Home</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/explore.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Explore</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/notification.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Notifications</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/message.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Messages</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/bookmark.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Bookmarks</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/list.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Lists</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/profile.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">Profiles</a>
+            </li>
+            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+              <img src="svgs/more.svg" width="30" alt="">
+              <a href="#" class="text-xl font-bold">More</a>
+            </li>
+          </ul>
+
+          <!-- Post Button -->
+          <div class="post px-4 lg:px-6 xl:px-10 py-4">
+            <button class="btn bg-yellow-500 text-white font-bold hidden lg:block px-16 py-2 rounded-[20px]">
+              Post
+            </button>
+          </div>
+        </div>
+      </aside>
+      <!-- ================= End Left Sidebar ================= -->
+
+      <!-- ===================== Center Feed (Always Visible) ===================== -->
+      <!-- Mobile: 100% width; Desktop: fixed readable width + border-x like Twitter -->
+      <main class="flex-1 w-full mx-auto
+         border-x border-gray-300 bg-white
+         sm:w-[92%]
+         md:w-[620px]
+         lg:w-[640px] xl:w-[700px]
+         2xl:w-[760px]">
+
+        <!-- ======= Top Tabs + Composer (YOUR ORIGINAL MARKUP KEPT) ======= -->
+        <div class="rounded-none md:rounded-none bg-white">
+          <!-- Tabs -->
+          <div class="first items-center w-full relative">
+            <div class="first flex font-bold">
+              <div class="foryou w-full bg-yellow-500 text-white flex justify-center py-3 cursor-pointer">For You</div>
+              <div class="follow w-full flex justify-center py-3 cursor-pointer">Following</div>
+              <div class="setting px-2 py-2">
+                <img src="svgs/setting.svg" width="60" alt="">
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300 my-1" />
+          <!-- Composer -->
+          <div class="second flex items-center py-4">
+            <div class="pic px-2">
+              <img class="rounded-full" src="img/profile.jpg" width="60" alt="">
+            </div>
+            <div class="whathappen w-full px-4 py-2 mx-2 font-semibold text-xl">
+              <div class="input w-full cursor-pointer">
+                <input type="text" placeholder="What is in Your Mind?!"
+                  class="w-full outline-none placeholder-gray-500" />
+              </div>
+              <div class="bottom flex gap-2">
+                <div class="icons gap-2 flex w-full ml-4 cursor-pointer">
+                  <img src="svgs/img.svg" width="20" alt="profile.svg">
+                  <img src="svgs/gif.svg" width="20" alt="profile.svg">
+                  <img src="svgs/profile1.svg" width="20" alt="">
+                </div>
+                <div class="post flex w-full justify-end">
+                  <button class="btn cursor-pointer bg-yellow-500 text-white font-bold px-4 py-1 border rounded-[20px]">
+                    Post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======= FOLLOWING CONTENT ======= -->
+        <div id="followingContent"
+          class="hidden feed flex flex-col mt-2 md:mt-4 space-y-6 h-[calc(100vh-170px)] overflow-y-auto p-4">
+          <h2 class="text-xl font-bold ">Groups & Pages</h2>
+          <div class="grid gap-4">
+            <div class="p-4 bg-gray-100 text-xl font-bold  rounded-lg">
+              <div class="heading flex items-center gap-2">
+                <img src="svgs/heaters.svg" width="40px" alt="">
+                <span>HeatingWorks</span>
+              </div>
+              <div class="post text-lg font-semibold relative">
+                <div class="top m-2">Heaters,thermcouples,K-type are Available</div>
+                <div class="img">
+                  <img src="img/heattech.png" width="600px" alt="">
+                </div>
+                <button class="follow bg-yellow-500 text-xl text-white py-2 px-4"
+                  style="position:absolute; bottom:12px; right:15px"><a href="https://maps.app.goo.gl/zEJZXaz8ojPWXTXBA"
+                    target="_blank">Follow</a></button>
+              </div>
+            </div>
+
+            <div class="p-4 bg-gray-100 text-xl font-bold  rounded-lg">
+              <div class="heading flex items-center gap-2">
+                <img src="svgs/portfolio.svg" width="40px" alt="">
+                <span>Portfolio Page</span>
+              </div>
+              <div class="post text-lg font-semibold relative">
+                <div class="top m-2">Hassan Ahmed Portfolio Website is live</div>
+                <div class="img">
+                  <img src="img/portfolio.png" width="600px" alt="">
+                </div>
+                <button class="follow bg-yellow-500 text-xl text-white py-2 px-4"
+                  style="position:absolute; bottom:12px; right:15px"><a href="https://hassaanahmed.netlify.app"
+                    target="_blank">Visit Page</a></button>
+              </div>
+            </div>
+
+
+
+            <div class="p-4 bg-gray-100 text-xl font-bold rounded-lg">
+              <div class="heading flex items-center gap-2">
+                <img src="svgs/quran.svg" width="40px" alt="">
+                <span>Recitation Page</span>
+              </div>
+              <div class="post text-lg font-semibold relative">
+                <div class="top m-2">Check Out, Tilawat Quran Player</div>
+                <div class="img">
+                  <video width="600" controls>
+                    <source src="video/QuranStudio.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <a href="video/QuranStudio.mp4" target="_blank"
+                  class="follow bg-yellow-500 text-xl text-white py-2 px-4 absolute bottom-3 right-4">
+                  Play Video
+                </a>
+              </div>
+            </div>
+
+            <div class="p-4 bg-gray-100 text-xl font-bold  rounded-lg">
+              <div class="heading flex items-center gap-2">
+                <img src="svgs/heaters.svg" width="40px" alt="">
+                <span>HeatingWorks</span>
+              </div>
+              <div class="post text-lg font-semibold relative">
+                <div class="top m-2">Thermcraft is leading..</div>
+                <div class="img">
+                  <img src="img/thermcraft.png" width="600px" alt="">
+                </div>
+                <button class="follow bg-yellow-500 text-xl text-white py-2 px-4"
+                  style="position:absolute; bottom:12px; right:15px"><a href="https://thermcraft.com.pk/"
+                    target="_blank">Visit Website</a></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ======= FEED (YOUR POSTS – UNCHANGED) ======= -->
+        <!-- Desktop: own scroll; Mobile: page scroll -->
+        <div id="postSection"
+          class="feed flex flex-col mt-2 md:mt-4 space-y-10 h-[calc(100vh-170px)] overflow-y-auto px-0 sm:px-2">
+
+          <!-- ====================== POST 1 ====================== -->
+          <div class="postimg mx-2">
+            <div class="post flex border-b border-gray-300 pb-4">
+              <div class="image my-4 mx-2">
+                <img class="w-12 h-12 rounded-full" src="img/profile.jpg" alt="Profile">
+              </div>
+              <div class="content my-3 ml-2 w-full">
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-bold hover:underline cursor-pointer">HassanAhmed</span>
+                  <span class="text-gray-500">@picturesFolder · 6h</span>
+                </div>
+                <p class="text-gray-800 text-sm my-2">LEGEND !</p>
+                <div class="posting mt-2 rounded-xl overflow-hidden">
+                  <img src="img/post1.png" alt="Post Image" class="w-full">
+                </div>
+              </div>
+            </div>
+            <div class="icons flex w-full px-10 ml-8 py-4 justify-between">
+              <div class="like flex gap-2 cursor-pointer hover:text-blue-600 hover:font-bold">
+                <img src="svgs/like.svg" width="20" alt="">2.9k
+              </div>
+              <div class="comment flex gap-2 cursor-pointer">
+                <img src="svgs/comment.svg" width="20" alt="">500
+              </div>
+              <div class="share flex gap-2 cursor-pointer">
+                <img src="svgs/share.svg" width="20" alt="">2.1k
+              </div>
+              <div class="analytics gap-2 flex cursor-pointer">
+                <img src="svgs/analytics.svg" width="20" alt="">3k
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300" />
+
+          <!-- ====================== POST 2 ====================== -->
+          <div class="postimg mx-2">
+            <div class="post flex border-b border-gray-300 pb-4">
+              <div class="image my-4 mx-2">
+                <img class="w-12 h-12 rounded-full" src="img/profile.jpg" alt="Profile">
+              </div>
+              <div class="content my-3 ml-2 w-full">
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-bold hover:underline cursor-pointer">HassanAhmed</span>
+                  <span class="text-gray-500">@picturesFolder · 6h</span>
+                </div>
+                <p class="text-gray-800 text-sm my-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae eius odio cupiditate, ipsam voluptate
+                  voluptates deserunt alias, ea nemo eum hic, optio cumque itaque praesentium distinctio corporis
+                  laborum id
+                  esse?
+                </p>
+              </div>
+            </div>
+            <div class="icons flex w-full px-10 ml-8 py-4 justify-between">
+              <div class="like flex gap-2 cursor-pointer hover:text-blue-600 hover:font-bold">
+                <img src="svgs/like.svg" width="20" alt="">2.9k
+              </div>
+              <div class="comment flex gap-2 cursor-pointer">
+                <img src="svgs/comment.svg" width="20" alt="">500
+              </div>
+              <div class="share flex gap-2 cursor-pointer">
+                <img src="svgs/share.svg" width="20" alt="">2.1k
+              </div>
+              <div class="analytics gap-2 flex cursor-pointer">
+                <img src="svgs/analytics.svg" width="20" alt="">3k
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300" />
+
+          <!-- ====================== POST 3 (Video) ====================== -->
+          <div class="postimg mx-2">
+            <div class="post flex border-b border-gray-300 pb-4">
+              <div class="image my-4 mx-2">
+                <img class="w-12 h-12 rounded-full" src="img/profile.jpg" alt="Profile">
+              </div>
+              <div class="content my-3 ml-2 w-full">
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-bold hover:underline cursor-pointer">HassanAhmed</span>
+                  <span class="text-gray-500">@picturesFolder · 6h</span>
+                </div>
+                <p class="text-gray-800 text-sm my-2">CGPA_Calculator</p>
+                <div class="posting mt-2 rounded-xl overflow-hidden">
+                  <video class="w-full" controls>
+                    <source src="video/CGPA_Calculator.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="icons flex w-full px-10 ml-8 py-4 justify-between">
+              <div class="like flex gap-2 cursor-pointer hover:text-blue-600 hover:font-bold">
+                <img src="svgs/like.svg" width="20" alt="">2.9k
+              </div>
+              <div class="comment flex gap-2 cursor-pointer">
+                <img src="svgs/comment.svg" width="20" alt="">500
+              </div>
+              <div class="share flex gap-2 cursor-pointer">
+                <img src="svgs/share.svg" width="20" alt="">2.1k
+              </div>
+              <div class="analytics gap-2 flex cursor-pointer">
+                <img src="svgs/analytics.svg" width="20" alt="">3k
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300" />
+
+          <!-- ====================== POST 4 ====================== -->
+          <div class="postimg mx-2">
+            <div class="post flex border-b border-gray-300 pb-4">
+              <div class="image my-4 mx-2">
+                <img class="w-12 h-12 rounded-full" src="img/profile.jpg" alt="Profile">
+              </div>
+              <div class="content my-3 ml-2 w-full">
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-bold hover:underline cursor-pointer">HassanAhmed</span>
+                  <span class="text-gray-500">@picturesFolder · 1h</span>
+                </div>
+                <p class="text-gray-800 text-sm my-2">History captured in a single frame.</p>
+                <div class="posting mt-2 rounded-xl overflow-hidden">
+                  <img src="img/war.jpg" alt="War Image" class="w-full">
+                </div>
+              </div>
+            </div>
+            <div class="icons flex w-full px-10 ml-8 py-4 justify-between">
+              <div class="like flex gap-2 cursor-pointer hover:text-blue-600 hover:font-bold">
+                <img src="svgs/like.svg" width="20" alt="">1.2k
+              </div>
+              <div class="comment flex gap-2 cursor-pointer">
+                <img src="svgs/comment.svg" width="20" alt="">300
+              </div>
+              <div class="share flex gap-2 cursor-pointer">
+                <img src="svgs/share.svg" width="20" alt="">400
+              </div>
+              <div class="analytics gap-2 flex cursor-pointer">
+                <img src="svgs/analytics.svg" width="20" alt="">500
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300" />
+
+          <!-- ====================== POST 5 (Video) ====================== -->
+          <div class="postimg mx-2">
+            <div class="post flex border-b border-gray-300 pb-4">
+              <div class="image my-4 mx-2">
+                <img class="w-12 h-12 rounded-full" src="img/profile.jpg" alt="Profile">
+              </div>
+              <div class="content my-3 ml-2 w-full">
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-bold hover:underline cursor-pointer">HassanAhmed</span>
+                  <span class="text-gray-500">@picturesFolder · 2h</span>
+                </div>
+                <p class="text-gray-800 text-sm my-2">Recitation session highlights.</p>
+                <div class="posting mt-2 rounded-xl overflow-hidden">
+                  <video class="w-full" controls>
+                    <source src="video/QuranStudio.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="icons flex w-full px-10 ml-8 py-4 justify-between">
+              <div class="like flex gap-2 cursor-pointer hover:text-blue-600 hover:font-bold">
+                <img src="svgs/like.svg" width="20" alt="">3.1k
+              </div>
+              <div class="comment flex gap-2 cursor-pointer">
+                <img src="svgs/comment.svg" width="20" alt="">650
+              </div>
+              <div class="share flex gap-2 cursor-pointer">
+                <img src="svgs/share.svg" width="20" alt="">700
+              </div>
+              <div class="analytics gap-2 flex cursor-pointer">
+                <img src="svgs/analytics.svg" width="20" alt="">800
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300" />
+
+           <!-- ====================== POST 3 (Video) ====================== -->
+          <div class="postimg mx-2">
+            <div class="post flex border-b border-gray-300 pb-4">
+              <div class="image my-4 mx-2">
+                <img class="w-12 h-12 rounded-full" src="img/profile.jpg" alt="Profile">
+              </div>
+              <div class="content my-3 ml-2 w-full">
+                <div class="flex items-center gap-2 text-sm">
+                  <span class="font-bold hover:underline cursor-pointer">HassanAhmed</span>
+                  <span class="text-gray-500">@picturesFolder · 6h</span>
+                </div>
+                <p class="text-gray-800 text-sm my-2">Social-media Template Using tailwindcss</p>
+                <div class="posting mt-2 rounded-xl overflow-hidden">
+                  <video class="w-full" controls>
+                    <source src="video/smui.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+            <div class="icons flex w-full px-10 ml-8 py-4 justify-between">
+              <div class="like flex gap-2 cursor-pointer hover:text-blue-600 hover:font-bold">
+                <img src="svgs/like.svg" width="20" alt="">2.9k
+              </div>
+              <div class="comment flex gap-2 cursor-pointer">
+                <img src="svgs/comment.svg" width="20" alt="">500
+              </div>
+              <div class="share flex gap-2 cursor-pointer">
+                <img src="svgs/share.svg" width="20" alt="">2.1k
+              </div>
+              <div class="analytics gap-2 flex cursor-pointer">
+                <img src="svgs/analytics.svg" width="20" alt="">3k
+              </div>
+            </div>
+          </div>
+          <hr class="border-t border-gray-300" />
+        </div>
+        <!-- ======= END FEED ======= -->
+
+      </main>
+      <!-- ===================== End Center Feed ===================== -->
+
+      <!-- ================= Right Sidebar (Desktop XL+) ================= -->
+      <aside class="hidden xl:block xl:w-[28%] 2xl:w-[26%] py-4 pr-2 sticky top-0 h-screen overflow-y-auto">
+        <!-- Search -->
+        <div class="flex items-center gap-2 my-2 px-3 py-2 bg-gray-100 rounded-[20px]">
+          <img src="svgs/search.svg" alt="search" class="w-5 h-5">
+          <input type="text" placeholder="Search Fryends" class="flex-1 bg-transparent outline-none">
+        </div>
+
+        <!-- Trends -->
+        <div class="trends my-3 text-gray-600 bg-gray-100 rounded-xl overflow-hidden">
+          <div class="flex justify-between items-center px-4 py-3 border-b">
+            <h2 class="font-bold text-lg">Trendings</h2>
+            <img src="svgs/setting.svg" width="20" alt="">
+          </div>
+          <div class="divide-y">
+            <div class="px-4 py-3 hover:bg-gray-200 cursor-pointer">
+              <h3 class="font-bold text-sm text-gray-900">Seinfeld</h3>
+              <p class="text-xs text-gray-500">10.9K Tweets</p>
+            </div>
+            <div class="px-4 py-3 hover:bg-gray-200 cursor-pointer">
+              <h3 class="font-bold text-sm text-gray-900">#MondayMotivation</h3>
+              <p class="text-xs text-gray-500">125K Tweets</p>
+            </div>
+            <div class="px-4 py-3 hover:bg-gray-200 cursor-pointer">
+              <h3 class="font-bold text-sm text-gray-900">#AMOConf19</h3>
+              <p class="text-xs text-gray-500">Trending with: #amoconf2019, premier doug ford, #onmuni</p>
+            </div>
+            <div class="px-4 py-3 hover:bg-gray-200 cursor-pointer">
+              <h3 class="font-bold text-sm text-gray-900">#Unifor19</h3>
+            </div>
+            <div class="px-4 py-3 hover:bg-gray-200 cursor-pointer">
+              <a class="text-sm font-semibold" style="color: rgb(221, 151, 22);">See All</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Suggestions -->
+        <div class="suggestions text-gray-600 mt-4 bg-gray-100 rounded-xl overflow-hidden">
+          <div class="flex items-center px-4 py-3 border-b">
+            <h2 class="font-bold text-lg">Suggestions</h2>
+          </div>
+          <div class="divide-y">
+            <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
+              <div class="flex items-center gap-3">
+                <img src="img/furnaceall.png" class="w-8 h-7" alt="">
+                <h3 class="font-bold text-md text-gray-900">Furnace All</h3>
+              </div>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a  href="https://furnaceall.com.pk" target="_blank">Follow</a></button>
+            </div>
+            <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
+              <div class="flex items-center gap-3">
+                <img src="svgs/profile.svg" class="w-7 h-7" alt="">
+                <h3 class="font-bold text-md text-gray-900">General Asim Munir</h3>
+              </div>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]">Follow</button>
+            </div>
+            
+            <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
+            </div>
+            <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
+              <div class="flex items-center gap-3">
+                <img src="img/profile.jpg" class="w-7 h-7" alt="">
+                <h3 class="font-bold text-md text-gray-900">Hassan Ahmed</h3>
+              </div>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a  href="https://www.linkedin.com/in/hassan-ahmed-8183452a6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtZP3DFHjQ668kHP45W3eIA%3D%3D" target="_blank">Connect</a></button>
+            </div>
+            <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
+              <div class="flex items-center gap-3">
+                <img src="img/usman.jpg" class="w-7 h-7" alt="">
+                <h3 class="font-bold text-md text-gray-900">Usman Sheikh</h3>
+              </div>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a  href="https://www.linkedin.com/in/usman-sheikh-3183aa272?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3gHBfRCHRq2D7i%2B6uMtT3g%3D%3D" target="_blank">Connect</a></button>
+            </div>
+            
+          </div>
+        </div>
+      </aside>
+      <!-- ================= End Right Sidebar ================= -->
+
+    </div>
+  </div>
+  <!-- ======= SCRIPT FOR TAB SWITCH ======= -->
+  <script>
+    const forYouTab = document.querySelector('.foryou');
+    const followingTab = document.querySelector('.follow');
+    const foryouFeed = document.getElementById('postSection');
+    const followingFeed = document.getElementById('followingContent');
+
+    forYouTab.addEventListener('click', () => {
+      foryouFeed.classList.remove('hidden');
+      followingFeed.classList.add('hidden');
+      forYouTab.classList.add('bg-yellow-500', 'text-white');
+      followingTab.classList.remove('bg-yellow-500', 'text-white');
+    });
+
+    followingTab.addEventListener('click', () => {
+      followingFeed.classList.remove('hidden');
+
+      foryouFeed.classList.add('hidden');
+      followingTab.classList.add('bg-yellow-500', 'text-white');
+      forYouTab.classList.remove('bg-yellow-500', 'text-white');
+    });
+  </script>
+
+</body>
+
+</html>

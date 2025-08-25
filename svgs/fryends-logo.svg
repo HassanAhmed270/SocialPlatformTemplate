@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+      .word {
+        font-family: 'Pacifico', 'Brush Script MT', 'Segoe Script', cursive;
+        font-size: 300px;
+        fill: #c99300ff;
+      }
+    ]]></style>
+  </defs>
+  <g>
+    <text class="word" x="50" y="280">Fryends</text>
+  </g>
+</svg>
