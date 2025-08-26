@@ -51,11 +51,11 @@
 
       <!-- ================= Left Sidebar (Desktop/Tablet) ================= -->
       <!-- Hidden on small; shows from md/lg upward. Sticky for desktop UX -->
-      <aside class="hidden lg:flex lg:w-[22%] xl:w-[20%] 2xl:w-[18%] py-4 pl-2 lg:pl-3 xl:pl-6
+      <aside class="left hidden lg:flex lg:w-[22%] xl:w-[20%] 2xl:w-[18%] py-4 pl-2 lg:pl-3 xl:pl-6
                flex-col justify-between sticky top-0 h-screen">
 
         <!-- Left: Logo + Nav + Post button (YOUR ICONS UNTOUCHED) -->
-        <div class="left w-full">
+        <div class="w-full">
           <!-- Logo -->
           <div class="logo ml-2 md:ml-6 lg:ml-4 xl:ml-6 py-2">
             <img src="svgs/fryends-logo.svg" alt="Fryends logo" />
@@ -91,7 +91,7 @@
               <img src="svgs/profile.svg" width="30" alt="">
               <a href="#" class="text-xl font-bold">Profiles</a>
             </li>
-            <li class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+            <li id="more" class="flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
               <img src="svgs/more.svg" width="30" alt="">
               <a href="#" class="text-xl font-bold">More</a>
             </li>
@@ -123,8 +123,8 @@
             <div class="first flex font-bold">
               <div class="foryou w-full bg-yellow-500 text-white flex justify-center py-3 cursor-pointer">For You</div>
               <div class="follow w-full flex justify-center py-3 cursor-pointer">Following</div>
-              <div class="setting px-2 py-2">
-                <img src="svgs/setting.svg" width="60" alt="">
+              <div class="menu md:hidden px-2 py-2">
+                <img src="svgs/hamburger.svg" width="60" alt="">
               </div>
             </div>
           </div>
@@ -416,7 +416,7 @@
           </div>
           <hr class="border-t border-gray-300" />
 
-           <!-- ====================== POST 3 (Video) ====================== -->
+          <!-- ====================== POST 3 (Video) ====================== -->
           <div class="postimg mx-2">
             <div class="post flex border-b border-gray-300 pb-4">
               <div class="image my-4 mx-2">
@@ -459,7 +459,7 @@
       <!-- ===================== End Center Feed ===================== -->
 
       <!-- ================= Right Sidebar (Desktop XL+) ================= -->
-      <aside class="hidden xl:block xl:w-[28%] 2xl:w-[26%] py-4 pr-2 sticky top-0 h-screen overflow-y-auto">
+      <aside class="right hidden xl:block xl:w-[28%] 2xl:w-[26%] py-4 pr-2 sticky top-0 h-screen overflow-y-auto">
         <!-- Search -->
         <div class="flex items-center gap-2 my-2 px-3 py-2 bg-gray-100 rounded-[20px]">
           <img src="svgs/search.svg" alt="search" class="w-5 h-5">
@@ -493,7 +493,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Suggestions -->
         <div class="suggestions text-gray-600 mt-4 bg-gray-100 rounded-xl overflow-hidden">
           <div class="flex items-center px-4 py-3 border-b">
@@ -505,7 +505,8 @@
                 <img src="img/furnaceall.png" class="w-8 h-7" alt="">
                 <h3 class="font-bold text-md text-gray-900">Furnace All</h3>
               </div>
-              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a  href="https://furnaceall.com.pk" target="_blank">Follow</a></button>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a
+                  href="https://furnaceall.com.pk" target="_blank">Follow</a></button>
             </div>
             <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
               <div class="flex items-center gap-3">
@@ -514,7 +515,7 @@
               </div>
               <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]">Follow</button>
             </div>
-            
+
             <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
             </div>
             <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
@@ -522,16 +523,22 @@
                 <img src="img/profile.jpg" class="w-7 h-7" alt="">
                 <h3 class="font-bold text-md text-gray-900">Hassan Ahmed</h3>
               </div>
-              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a  href="https://www.linkedin.com/in/hassan-ahmed-8183452a6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtZP3DFHjQ668kHP45W3eIA%3D%3D" target="_blank">Connect</a></button>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a
+                  href="https://www.linkedin.com/in/hassan-ahmed-8183452a6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtZP3DFHjQ668kHP45W3eIA%3D%3D"
+                  target="_blank">Connect</a></button>
             </div>
             <div class="flex items-center justify-between px-4 py-4 hover:bg-gray-200 cursor-pointer">
               <div class="flex items-center gap-3">
-                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGxIQhoEQBcAA/profile-displayphoto-scale_200_200/B4DZf91pZ_GYAY-/0/1752310390772?e=1758758400&v=beta&t=PFJCUHlDXj66DCs19xiPWiYdisPRZou5y-lTSXQ17Zk" class="w-7 h-7" alt="">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4D03AQGxIQhoEQBcAA/profile-displayphoto-scale_200_200/B4DZf91pZ_GYAY-/0/1752310390772?e=1758758400&v=beta&t=PFJCUHlDXj66DCs19xiPWiYdisPRZou5y-lTSXQ17Zk"
+                  class="w-7 h-7" alt="">
                 <h3 class="font-bold text-md text-gray-900">Usman Sheikh</h3>
               </div>
-              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a  href="https://www.linkedin.com/in/usman-sheikh-3183aa272?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3gHBfRCHRq2D7i%2B6uMtT3g%3D%3D" target="_blank">Connect</a></button>
+              <button class="text-xs text-white font-semibold bg-yellow-500 px-4 py-1 rounded-[12px]"><a
+                  href="https://www.linkedin.com/in/usman-sheikh-3183aa272?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3gHBfRCHRq2D7i%2B6uMtT3g%3D%3D"
+                  target="_blank">Connect</a></button>
             </div>
-            
+
           </div>
         </div>
       </aside>
@@ -560,6 +567,58 @@
       followingTab.classList.add('bg-yellow-500', 'text-white');
       forYouTab.classList.remove('bg-yellow-500', 'text-white');
     });
+
+    let left = document.querySelector('.left');
+    let right = document.querySelector('.right');
+    let menu = document.querySelector('.menu');
+    let more = document.getElementById('more');
+
+    menu.style.zIndex = "10000";
+
+    // toggle left bar on hamburger click
+    menu.addEventListener('click', () => {
+      if (left.style.display === "block" || right.style.display === "block") {
+        left.style.display = "none";
+        right.style.display = "none";
+      } else {
+        // open left sidebar
+        left.style.display = "block";
+        left.style.zIndex = "10000";
+        left.style.width = "60%";
+        left.style.position = "fixed";
+        left.style.top = "0";
+        left.style.left = "0";
+        left.style.height = "100%";
+        left.style.background = "#f3f4f6";
+
+        // update 'more' link to trigger right bar
+        more.innerHTML = `
+      <li class="more flex items-center justify-start gap-3 lg:gap-4 xl:gap-6 py-3">
+        <img src="svgs/more.svg" width="30" alt="">
+        <a href="#" class="text-xl font-bold">Trends</a>
+      </li>`;
+      }
+    });
+
+    // toggle right bar on "more" click
+    more.addEventListener('click', () => {
+      left.style.display = "none"; // close left first
+
+      right.style.display = "block";
+      right.style.zIndex = "10000";
+      right.style.width = "60%";
+      right.style.position = "fixed";
+      right.style.top = "0";
+      right.style.right = "0";   // ✅ stick to right
+      right.style.height = "100%";
+      right.style.background = "#f3f4f6";
+
+      // keep hamburger above everything
+      menu.style.zIndex = "11000";
+    });
+
+
+
   </script>
 
 </body>
